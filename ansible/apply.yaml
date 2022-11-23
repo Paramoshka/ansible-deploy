@@ -1,0 +1,10 @@
+- name: install docker
+  hosts: host
+  become: false
+  tasks:
+    - name: generate file from template
+      template:
+        src: "{{ item }}"
+        dest: 
+      with_fileglob:
+        - "template/*j2"

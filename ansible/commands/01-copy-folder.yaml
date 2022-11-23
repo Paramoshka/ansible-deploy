@@ -1,0 +1,8 @@
+- name: install docker
+  hosts: host
+  become: false
+  tasks:
+    - name: copy docker folder on host
+      copy:
+        src: ../../docker
+        dest: ~/docker
