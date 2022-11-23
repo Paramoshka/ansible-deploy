@@ -46,3 +46,27 @@
         name: docker
         state: started
         enabled: true
+
+    - name: adding existing user "{{ ansible_user }}" to group docker
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: install dependicies
+      package:
+        name: python3-pip
+        state: latest
+
+    - name: install setup-tools
+      pip:
+        name: setuptools-rust
+        state: present
+        executable: pip-3
+
+    - name: "pip"
+      become: false
+      pip:
+        name: docker-compose
+        state: present
+        executable: pip-3

@@ -1,10 +1,10 @@
 - name: install docker
   hosts: host
-  become: false
+  become: true
   tasks:
     - name: run docker
       docker_compose:
-        project_src: ~/docker
+        project_src: ~/docker/docker
         files:
           - docker-compose.yaml
         build: true

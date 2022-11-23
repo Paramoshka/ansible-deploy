@@ -4,8 +4,8 @@
   import_playbook: commands/00-template.yaml
 - name: install docker
   import_playbook: packages/01-docker.yaml
-- name: install docker-compose
-  import_playbook: packages/02-docker-compose.yaml
+#- name: install docker-compose
+#  import_playbook: packages/02-docker-compose.yaml
 - name: copy folder
   import_playbook: commands/01-copy-folder.yaml
 - name: run docker-compose
