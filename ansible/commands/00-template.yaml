@@ -1,0 +1,15 @@
+- name: templates
+  hosts: localhost
+  become: false
+  tasks:
+    - name: include vars file
+      include_vars:
+        file: ../../vars.yaml
+    - name: generate inventory file from template
+      template:
+        src: ../template/inventory.yaml.j2
+        dest: ../inventory.yaml
+    - name: generate env file
+      template:
+        src: ../template/.env.j2
+        dest: ../../docker/.env

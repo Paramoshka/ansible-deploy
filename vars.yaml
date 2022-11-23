@@ -1,6 +1,6 @@
 host:
-  address: "192.168.1.1"
+  address: "192.168.1.127"
   port: "22"
-  user: "ivan"
-  ssh-key: "" #absolute path
-  nginx-servername: "localhost"
+  user: "admin"
+  sshkey: "~/access/wardump" #absolute path
+  nginx_servername: "localhost"

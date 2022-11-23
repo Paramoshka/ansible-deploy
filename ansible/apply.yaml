@@ -1,10 +1,12 @@
+
+---
+- name: template
+  import_playbook: commands/00-template.yaml
 - name: install docker
-  hosts: host
-  become: false
-  tasks:
-    - name: generate file from template
-      template:
-        src: "{{ item }}"
-        dest: 
-      with_fileglob:
-        - "template/*j2"
+  import_playbook: packages/01-docker.yaml
+- name: install docker-compose
+  import_playbook: packages/02-docker-compose.yaml
+- name: copy folder
+  import_playbook: commands/01-copy-folder.yaml
+- name: run docker-compose
+  import_playbook: commands/02-run-docker.yaml
