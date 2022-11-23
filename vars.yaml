@@ -1,0 +1,6 @@
+host:
+  address: "192.168.1.1"
+  port: "22"
+  user: "ivan"
+  ssh-key: ""
+  nginx-servername: "localhost"

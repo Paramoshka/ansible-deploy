@@ -1,0 +1,7 @@
+server {
+    server_name ${NGINX_HOST} ;
+    listen 80;
+    location / {
+        proxy_pass portainer:5000;
+    }
+}

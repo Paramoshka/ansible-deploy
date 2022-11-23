@@ -1,0 +1,35 @@
+---
+version: "3.3"
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:linux-amd64-2.16.2-alpine
+    restart: always
+    networks:
+      back:
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "portainer_data:/data"
+  nginx:
+    container_name: nginx
+    image: nginx:1.22-alpine
+    restart: always
+    networks:
+      back:
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "nginx/templates:/etc/nginx/templates"
+    environment:
+      - NGINX_HOST=${NGINX_HOST}
+networks:
+  back:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.0.0/24
+volumes:
+  portainer_data:
+
+

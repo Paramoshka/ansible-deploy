@@ -1,0 +1,7 @@
+handler:
+  hosts:
+    host:
+      ansible_host: "{{ host.address }}"
+      ansible_port: "{{ host.port }}"
+      ansible_user: "{{ host.user }}"
+      ansible_ssh_private_key_file: "{{ host.ssh-key }}"
