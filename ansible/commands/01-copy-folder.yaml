@@ -5,4 +5,5 @@
     - name: copy docker folder on host
       copy:
         src: ../../docker
-        dest: ~/docker
+        dest: ~/
+        force: true

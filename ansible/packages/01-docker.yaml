@@ -3,6 +3,12 @@
   become: yes
   gather_facts: yes
   tasks:
+    - name: check gpg
+      package:
+        name: gpg
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
     - name: add GPG key (Debian OS)
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
@@ -53,20 +59,28 @@
         groups: docker
         append: yes
 
+    - name: install pip
+      package:
+        name: pip
+        state: present
+
     - name: install dependicies
       package:
-        name: python3-pip
+        name:
+          - python3-pip
+          - python3
         state: latest
 
-    - name: install setup-tools
-      pip:
-        name: setuptools-rust
-        state: present
-        executable: pip-3
 
     - name: "pip"
       become: false
       pip:
+        name: docker
+        state: forcereinstall
+        executable: pip3
+    - name: "pip"
+      become: false
+      pip:
         name: docker-compose
-        state: present
-        executable: pip-3
+        state: forcereinstall
+        executable: pip3

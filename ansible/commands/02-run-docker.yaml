@@ -1,10 +1,12 @@
 - name: install docker
   hosts: host
-  become: true
+  become: false
   tasks:
     - name: run docker
       docker_compose:
-        project_src: ~/docker/docker
+        project_src: ~/docker
         files:
           - docker-compose.yaml
         build: true
+      vars:
+        ansible_python_interpreter: /usr/bin/python3

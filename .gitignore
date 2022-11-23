@@ -1,2 +1,3 @@
 /ansible/inventory.yaml
 /docker/.env
+/id_rsa

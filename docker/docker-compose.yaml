@@ -20,7 +20,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - "nginx/templates:/etc/nginx/templates"
+      - "./nginx/templates/:/etc/nginx/templates/"
+      - "nginx_logs:/var/log/nginx"
     environment:
       - NGINX_HOST=${NGINX_HOST}
 networks:
@@ -31,5 +32,6 @@ networks:
         - subnet: 172.16.0.0/24
 volumes:
   portainer_data:
+  nginx_logs:
 
 
